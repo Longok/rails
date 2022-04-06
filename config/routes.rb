@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+  get 'static_pages/help'
+
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
@@ -11,5 +14,5 @@ Rails.application.routes.draw do
   post 'sign-up', to: 'users#create'
 
   resources :users
- 
+  root 'static_pages#home'
 end
