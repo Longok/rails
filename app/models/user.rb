@@ -8,10 +8,13 @@ class User < ApplicationRecord
     validates :password, presence: true, length: {minimum: 6}
 
 
-    def User.digest(string)
-        cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                      BCrypt::Engine.cost
-        BCrypt::Password.create(string, cost: cost)
+    def User.digest string
+        cost = if ActiveModel::SecurePassword.min_cost
+                    BCrypt::Engine::MIN_COST
+                else
+                    BCrypt::Engine.cost
+                end
+        BCrypt::Password.create string, cost: cost
     end
     
       # Returns a random token.
@@ -33,4 +36,7 @@ class User < ApplicationRecord
         update_attribute :remember_digest, nil
     end
        
+
+    # paginate
+    self.per_page = 10
 end

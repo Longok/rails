@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
     user = User.find_by email: params[:session][:email].downcase
     if user&.authenticate params[:session][:password]
       log_in user
-
+      # when user check box remember_me
       params[:session][:remember_me] == "1" ? remember(user) : forget(user)
-      redirect_to root_path
+      redirect_back_or user
     else
       flash.now[:danger] = t "invalid_email_password_combination"
       render :new

@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+    before_action :logged_in_user, only: [:index, :edit, :update]
+    before_action :correct_user, only: [:edit, :update]
 
     def index
-        @users = User.all.order('id DESC')
+        @users = User.paginate(page:params[:page])
        
     end
 
@@ -17,7 +19,8 @@ class UsersController < ApplicationController
         @user = User.new user_params
         if @user.save
             log_in @user
-            redirect_to new_user_path, notice: "User was successfuly create"
+            flash[:success] = "User was successfuly create!"
+            redirect_to @user
         else
             render :new
         end       
@@ -31,7 +34,8 @@ class UsersController < ApplicationController
     def update
         @user = User.find_by id: params[:id]
         if @user.update(user_params)
-            redirect_to @user, notice: "User was successfully updated."
+            flash[:success] = "User was successfully updated!"
+            redirect_to @user
         else
             render :edit, notice: "Update fail"
         end
@@ -42,6 +46,22 @@ class UsersController < ApplicationController
         @user = User.find_by id: params[:id]
         @user.destroy
         redirect_to root_path
+    end
+
+    # Before filters
+    # Confirms a logged-in user.
+    def logged_in_user
+        unless logged_in?
+            store_location
+            flash[:danger] = "Please log in."
+            redirect_to login_url
+        end
+    end
+
+    # Confirms the correct user.
+    def correct_user
+        @user = User.find_by id: params[:id]
+        redirect_to(login_url) unless @user == current_user
     end
 
     private

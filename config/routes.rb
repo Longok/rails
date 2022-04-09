@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   post 'sign-up', to: 'users#create'
 
   resources :users
+
   root 'static_pages#home'
 end
