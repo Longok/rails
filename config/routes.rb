@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   post 'sign-up', to: 'users#create'
 
   resources :users
-
+  resources :account_activations, only: [:edit]
   root 'static_pages#home'
 end
