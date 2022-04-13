@@ -3,12 +3,13 @@ class UsersController < ApplicationController
     before_action :correct_user, only: [:edit, :update]
 
     def index
-        @users = User.paginate(page:params[:page])
+        @users = User.paginate(page: params[:page])
        
     end
 
     def show
         @user = User.find_by id: params[:id]
+        @microposts = @user.microposts.paginate(page: params[:page])
     end
 
     def new
