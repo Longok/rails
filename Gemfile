@@ -26,6 +26,9 @@ gem 'faker', '~> 2.20'
 gem 'will_paginate', '~> 3.3'
 gem "bootstrap-will_paginate", '1.0.0'
 gem 'figaro'
+gem "image_processing", "1.9.3"
+gem "mini_magick", "4.9.5"
+gem "active_storage_validations", "0.8.2"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

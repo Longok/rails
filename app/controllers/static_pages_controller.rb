@@ -1,7 +1,9 @@
 class StaticPagesController < ApplicationController
   def home
-    if session[:user_id]
-      @user = User.find(session[:user_id])
+    # @micropost = current_user.microposts.build if logged_in? 
+    if logged_in?
+      @micropost = current_user.microposts.build
+      @feed_items = current_user.feed.order("id DESC").paginate(page: params[:page])
     end
   end
 

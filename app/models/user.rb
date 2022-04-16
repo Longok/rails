@@ -43,9 +43,6 @@ class User < ApplicationRecord
         update_attribute :remember_digest, nil
     end
     
-    # Paginate
-    self.per_page = 10
-   
 
     # Returns true if the given token matches the digest.
     def authenticated? attribute, token
@@ -78,6 +75,13 @@ class User < ApplicationRecord
         reset_sent_at < 2.hours.ago
     end
        
+
+
+    # Microposts
+    def feed
+        microposts
+    end
+
     private
     def downcase_email
         self.email = email.downcase
