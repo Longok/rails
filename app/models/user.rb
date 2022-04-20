@@ -1,6 +1,15 @@
 class User < ApplicationRecord
     has_many :microposts, dependent: :destroy
 
+    has_many :active_relationships, class_name: Relationship.name,
+    foreign_key: :follower_id, dependent: :destroy
+
+    has_many :passive_relationships, class_name: Relationship.name,
+    foreign_key: :followed_id, dependent: :destroy
+
+    has_many :following, through: :active_relationships, source: :followed
+    has_many :followers, through: :passive_relationships, source: :follower
+
     attr_accessor :remember_token, :activation_token, :reset_token
     before_save :downcase_email
     before_create :create_activation_digest
@@ -75,12 +84,28 @@ class User < ApplicationRecord
         reset_sent_at < 2.hours.ago
     end
        
-
-
     # Microposts
     def feed
-        microposts
+        # microposts
+        # Micropost.where user_id: (following_ids << id) 
+        following_ids = "SELECT followed_id FROM relationships
+            WHERE follower_id = :user_id"
+        Micropost.where("user_id IN (#{following_ids})
+            OR user_id = :user_id", user_id: id)
+
     end
+
+    # Follow
+    def follow other_user #Follows a user.
+        following << other_user
+    end
+    def unfollow other_user #Unfollows a user.
+        following.delete other_user
+    end
+    def following? other_user #Returns if the current user is following the other_user or not
+        following.include? other_user
+    end
+
 
     private
     def downcase_email
@@ -93,5 +118,5 @@ class User < ApplicationRecord
         self.activation_digest = User.digest(activation_token)
     end
 
-  
+    
 end

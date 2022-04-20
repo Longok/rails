@@ -2,7 +2,8 @@
     <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
     <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
     <span class="content">
-        <%= micropost.content %>
+        <h3><%= link_to truncate(micropost.content, length: 110) , micropost %></h3>
+
         <%= image_tag micropost.image if micropost.image.attached? %>
     </span>
     <span class="timestamp">
