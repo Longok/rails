@@ -3,7 +3,7 @@ class MicropostsController < ApplicationController
     before_action :correct_user, only: [:destroy]
 
     def show
-        @micropost = current_user.feed.find_by id: params[:id]
+        @micropost = Micropost.find_by id: params[:id]
     end
 
     def create
