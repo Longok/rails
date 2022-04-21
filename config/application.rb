@@ -12,5 +12,6 @@ module R6Project
 
     # Include the authenticity token in remote forms.
     config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.active_storage.replace_on_assign_to_many = false
   end
 end

@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by id: params[:id]
+        @micropost = current_user.microposts.build  #link bai viet
         @microposts = @user.microposts.order("id DESC").paginate(page: params[:page],  per_page: 10)
     end
 
