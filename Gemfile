@@ -26,7 +26,7 @@ gem 'faker', '~> 2.20'
 gem 'will_paginate', '~> 3.3'
 gem "bootstrap-will_paginate", '1.0.0'
 gem 'figaro'
-gem "image_processing", "1.9.3"
+gem "image_processing", "1.12.1"
 gem "mini_magick", "4.9.5"
 gem "active_storage_validations", "0.8.2"
 
@@ -51,6 +51,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'sqlite3', '~> 1.4'
+  gem 'pry-rails'
 
 end
 

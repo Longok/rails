@@ -4,7 +4,7 @@
         <h1><%= @micropost.content %></h1>
 
         <% if @micropost.images.attached? %>
-            <% @micropost.images.each do |image| %>
+            <% @micropost.display_images.each do |image| %>
                 <%= image_tag image %>
             <% end %>
         <% end %>
