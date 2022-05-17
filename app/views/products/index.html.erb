@@ -1,0 +1,30 @@
+<% provide(:title, "Index") %>
+<% provide(:button_text, "Create product") %>
+<h1> Products page </h1>
+
+<%= link_to "New", new_product_path %>
+<div class="card">
+
+    <% @products.each do |product| %>
+
+       <div class="card-item">  
+
+        <%= image_tag product.display_image if product.image.attached? %>
+
+        <div class="card-body">
+            <h5 class="card-title"> <%= link_to product.name, product_path(product) %></h5>
+               
+            <p class="card-price"> <%= product.price %></p>
+
+            <%= number_field_tag :quantity %>
+
+        </div>
+
+            <p> <%= button_to "Add to cart", bills_path(:product_id => product.id) %> </p>
+       
+       </div>
+    <% end %>
+    
+</div>
+
+    

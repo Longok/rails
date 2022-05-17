@@ -1,0 +1,16 @@
+.card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+    gap: 1.2rem;
+
+    .card-item {
+        background-color: rgb(252, 251, 249);
+        text-align: center;
+        margin-top: 1rem;
+
+        .btn-cart {
+            width: 30%;
+        }
+    }
+}
+

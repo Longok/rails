@@ -1,0 +1,12 @@
+<%= form_for(@product) do |f| %>
+    <%= render "shared/error_messages", object: @product %>
+    <%= f.label :name %> 
+    <%= f.text_field :name, class: "form-control" %>
+
+    <%= f.label :price %> 
+    <%= f.text_field :price, class: "form-control" %>
+
+    <%= f.label :image %>
+    <%= f.file_field :image, class: "form-control" %>
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

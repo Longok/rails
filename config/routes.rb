@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  get 'carts/show', to: "carts#show", as:'cart'
+  delete 'carts/:id', to: "carts#destroy"
+ 
+
   root 'static_pages#home'
   
   get 'static_pages/home'
@@ -25,6 +30,9 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :microposts, only: [:create, :destroy, :show]
   resources :relationships, only: [:create, :destroy]
-  
+  resources :products
+  resources :bills
+
+
 end
 
