@@ -39,5 +39,5 @@
     # Product.create!(name: "Sua chua co duong",
     #         price: 25000)
 
-    #     Product.image.attach(io: File.open("app/assets/images/co-duong.png"), filename: 'co-duong.png')
+    #     image = Rails.root.joins("app/assets/images/co-duong.png").open
     
