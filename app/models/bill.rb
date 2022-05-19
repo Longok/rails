@@ -8,4 +8,5 @@ class Bill < ApplicationRecord
     self.quantity * self.product.price
   end
 
+
 end

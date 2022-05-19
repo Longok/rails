@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'carts/show', to: "carts#show", as:'cart'
+  get 'carts/show/', to: "carts#show", as:'cart'
   delete 'carts/:id', to: "carts#destroy"
  
+  post 'bills/:id/add', to: "bills#add_quantity", as:'bill_add'
+  post 'bills/:id/reduce', to: "bills#reduce_quantity", as:'bill_reduce'
 
   root 'static_pages#home'
   

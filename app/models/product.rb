@@ -13,8 +13,8 @@ class Product < ApplicationRecord
 
     # Returns a resized image for display.
     def display_image
-        image.variant(resize_to_limit: [180, 180])
+        image.variant(resize_to_limit: [160, 160])
     end
 
-
+    
 end

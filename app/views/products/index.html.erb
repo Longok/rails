@@ -11,17 +11,17 @@
 
         <%= image_tag product.display_image if product.image.attached? %>
 
-        <div class="card-body">
-            <h5 class="card-title"> <%= link_to product.name, product_path(product) %></h5>
-               
-            <p class="card-price"> <%= product.price %></p>
+            <div class="card-body">
+                <h5 class="card-title"> <%= link_to product.name, product_path(product) %></h5>
+                
+                <p class="card-price"> <%= product.price %></p>
 
-            <%= number_field_tag :quantity %>
+                <%= number_field_tag :quantity, '1', min: 1 %>
 
-        </div>
+            </div>
 
             <p> <%= button_to "Add to cart", bills_path(:product_id => product.id) %> </p>
-       
+        
        </div>
     <% end %>
     

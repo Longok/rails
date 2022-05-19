@@ -1,26 +1,43 @@
 class BillsController < ApplicationController
-
+   
     def create
-        chose_product = Product.find(params[:product_id])
-        current_cart = @current_cart
+        @cart = current_cart
+        product = Product.find(params[:product_id])
+        @bill = @cart.add_product(product)
 
-        if current_cart.products.include?(chose_product)
-           @bill = current_cart.bills.find_by(:product_id => chose_product)
-           @bill.quantity += 1
-
-        else
-            @bill = Bill.new
-            @bill.cart = current_cart
-            @bill.product = chose_product
-        end
         @bill.save
+        flash[:info] = "Them vao gio hang thanh cong"
         redirect_to cart_path
+
     end
-    
+
     def destroy
         @bill = Bill.find(params[:id])
         @bill.destroy
+        flash[:info] = "Xoa san pham thanh cong"
+        redirect_to cart_path
+    end
 
+
+    def add_quantity
+        @bill = Bill.find(params[:id])
+        @bill.quantity += 1
+        @bill.save
+        flash[:info] = "Cap nhat san pham thanh cong"
+        redirect_to cart_path
+    end
+
+    def reduce_quantity
+        @bill = Bill.find(params[:id])
+        if @bill.quantity > 1
+            @bill.quantity -= 1
+            flash[:info] = "Cap nhat san pham thanh cong"
+        else         
+            @bill.quantity = 0 
+            @bill.destroy
+            flash[:info] = "Xoa san pham thanh cong"
+        end
+        @bill.save
         redirect_to cart_path
     end
 
