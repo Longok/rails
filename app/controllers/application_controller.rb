@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
     before_action :current_cart
     before_action :current_cart_index
 
+
     include SessionsHelper
 
     private
@@ -25,4 +26,6 @@ class ApplicationController < ActionController::Base
     def current_cart_index
         @cart = current_cart
     end
+
+
 end

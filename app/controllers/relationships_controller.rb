@@ -1,4 +1,5 @@
 class RelationshipsController < ApplicationController
+    before_action :current_cart_index
 
     def create 
         @user = User.find_by(id: params[:followed_id])

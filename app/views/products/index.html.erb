@@ -2,7 +2,9 @@
 <% provide(:button_text, "Create product") %>
 <h1> Products page </h1>
 
-<%= link_to "New", new_product_path %>
+<% if logged_in? && current_user.admin? %>
+    <%= link_to "New", new_product_path %>
+<% end %>
 <div class="card">
 
     <% @products.each do |product| %>

@@ -4,4 +4,6 @@
 <p><%= @product.name %></p>
 <p><%= @product.price %></p>
 
+<% if logged_in? && current_user.admin? %>
 | <%= link_to "Delete", @product, method: :delete, data: {confirm: "You sure?"} %>
+<% end %>
