@@ -6,9 +6,9 @@
     </td>
     <td><%= link_to "Delete item", bill_path(bill), method: :delete, data: {confirm: "Are you sure?"} %></td>
     <td>
-        <strong><%= link_to "-", bill_reduce_path(:id =>bill), method: :post %></strong>
+        <strong><%= link_to "-", bill_reduce_path(bill), method: :post %></strong>
         <%= bill.quantity %>
-        <strong><%= link_to "+", bill_add_path(:id =>bill), method: :post %></strong>
+        <strong><%= link_to "+", bill_add_path(bill), method: :post %></strong>
 
     </td>
     <td><%= bill.product.price %></td>

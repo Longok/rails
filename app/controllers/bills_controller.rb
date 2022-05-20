@@ -7,7 +7,7 @@ class BillsController < ApplicationController
 
         @bill.save
         flash[:info] = "Them vao gio hang thanh cong"
-        redirect_to cart_path
+        redirect_to cart_path(@cart)
 
     end
 
@@ -15,19 +15,21 @@ class BillsController < ApplicationController
         @bill = Bill.find(params[:id])
         @bill.destroy
         flash[:info] = "Xoa san pham thanh cong"
-        redirect_to cart_path
+        redirect_to cart_path(@cart)
     end
 
 
     def add_quantity
+        @cart = current_cart
         @bill = Bill.find(params[:id])
         @bill.quantity += 1
         @bill.save
         flash[:info] = "Cap nhat san pham thanh cong"
-        redirect_to cart_path
+        redirect_to cart_path(@cart)
     end
 
     def reduce_quantity
+        @cart = current_cart
         @bill = Bill.find(params[:id])
         if @bill.quantity > 1
             @bill.quantity -= 1
@@ -36,9 +38,10 @@ class BillsController < ApplicationController
             @bill.quantity = 0 
             @bill.destroy
             flash[:info] = "Xoa san pham thanh cong"
+            
         end
         @bill.save
-        redirect_to cart_path
+        redirect_to cart_path(@cart)
     end
 
     private
