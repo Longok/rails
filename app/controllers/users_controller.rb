@@ -3,7 +3,6 @@ class UsersController < ApplicationController
     before_action :correct_user, only: [:edit, :update]
 
     def index
-        @cart = current_cart
         @users = User.paginate(page: params[:page],  per_page: 10)
         # render json: @users, include: [:followers, :following, :microposts]  #render json
     end
@@ -84,4 +83,5 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit :name, :email, :password, :password_confirmation
     end
+
 end

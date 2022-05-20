@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception 
     before_action :current_cart
+    before_action :current_cart_index
+
     include SessionsHelper
 
     private
@@ -20,5 +22,7 @@ class ApplicationController < ActionController::Base
         cart
     end
 
-
+    def current_cart_index
+        @cart = current_cart
+    end
 end

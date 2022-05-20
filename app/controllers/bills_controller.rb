@@ -7,7 +7,7 @@ class BillsController < ApplicationController
 
         @bill.save
         flash[:info] = "Them vao gio hang thanh cong"
-        redirect_to cart_path(@cart)
+        redirect_to cart_path
 
     end
 
@@ -15,7 +15,7 @@ class BillsController < ApplicationController
         @bill = Bill.find(params[:id])
         @bill.destroy
         flash[:info] = "Xoa san pham thanh cong"
-        redirect_to cart_path(@cart)
+        redirect_to cart_path
     end
 
 
