@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :products
   resources :bills
+  resources :payments
 
 
 end

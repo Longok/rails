@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
     has_many :bills
-
+    
     has_one_attached :image 
 
     validates :name, uniqueness: true, presence: true, length: {minimum: 4}

@@ -23,5 +23,11 @@
             </tr>
         </tbody>
     </table>
-<%= link_to "Check out" %>
+
+    <% if logged_in? %> 
+        <%= link_to "Check out", new_payment_path %>
+
+    <% else %>
+        <%= link_to "Check-out", login_path %>   
+    <% end %>
 <% end %>

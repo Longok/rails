@@ -1,0 +1,18 @@
+<%= form_for (@payment) do |f| %>
+
+    <%= render "shared/error_messages", object: @payment %>
+
+    <%= f.label :address %> 
+    <%= f.text_field :address, class: "form-control" %>
+
+    <%= f.label :phone_number %> 
+    <%= f.text_field :phone_number, class: "form-control" %>
+
+    <%= f.label :type %>
+    <%= f.text_field :type, class: "form-control" %>
+
+
+    <%= f.submit "Check out", class: "btn btn-primary" %>
+
+
+<% end %>
