@@ -33,8 +33,9 @@ Rails.application.routes.draw do
   resources :microposts, only: [:create, :destroy, :show]
   resources :relationships, only: [:create, :destroy]
   resources :products
-  resources :bills
-  resources :payments
+  resources :bills do 
+    resources :payments
+  end
 
 
 end

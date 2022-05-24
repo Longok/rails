@@ -26,8 +26,7 @@
     </table>
 
     <% if logged_in? %> 
-        <%= link_to "Check out", new_payment_path %>
-
+        <%= link_to "Check out", new_bill_payment_path(@bill) %>
     <% else %>
         <%= link_to "Check-out", login_path %>   
     <% end %>

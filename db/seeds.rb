@@ -36,8 +36,23 @@
     followers.each{|follower| follower.follow(user)}
 
     #products
-    # Product.create!(name: "Sua chua co duong",
-    #         price: 25000)
+    product1 = Product.create!(name: "Sữa chua Vinamilk có đường",
+            price: 25000
+        )
+    product1.image.attach(io: File.open(Rails.root.join('app/assets/images/co-duong.png')), filename: 'co-duong.png')
+    
+    product2 = Product.create!(name: "Sữa chua uống Kefir ",
+            price: 6000
+        )
+    product2.image.attach(io: File.open(Rails.root.join('app/assets/images/SCU-kefir.png')), filename: 'SCU-kefir.png')
 
-    #     image = Rails.root.joins("app/assets/images/co-duong.png").open
+    product3 = Product.create!(name: "Sữa tười Farm có đường",
+            price: 30000
+        )
+    product3.image.attach(io: File.open(Rails.root.join('app/assets/images/sugar-180ml.png')), filename: 'sugar.png')
+
+    product4 = Product.create!(name: "Nước nha đam V-fresh",
+            price: 8000
+        )
+    product4.image.attach(io: File.open(Rails.root.join('app/assets/images/vfresh.png')), filename: 'vfresh.png')
     

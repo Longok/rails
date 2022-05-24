@@ -5,20 +5,21 @@ class PaymentsController < ApplicationController
     end
 
     def new
-        @payment = Payment.new
+        @bill = Bill.find(params[:bill_id])
+        @payment = @bill.payments.new
     end
 
 
     def create
-        @payment = Payment.new payment_params
-        @user = current_user
-        @bill = Bill.find_by id: params[:id]
+        @bill = Bill.find(params[:bill_id])
+        @payment = @bill.payments.build payment_params
+        @payment.user_id = current_user.id
 
         if @payment.save
             Cart.destroy(session[:cart_id])
             session[:cart_id] = nil
             flash[:info] = "Thank you for order"
-            redirect_to "/payments"
+            redirect_to "/products"
         else 
             render :new
         end
