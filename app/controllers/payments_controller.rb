@@ -10,9 +10,11 @@ class PaymentsController < ApplicationController
 
 
     def create
+
         @payment = Payment.new payment_params
-        @user = current_user
         @bill = Bill.find_by id: params[:id]
+        @payment.user_id = current_user.id
+        @payment.bill_id = @bill
 
         if @payment.save
             Cart.destroy(session[:cart_id])
