@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_084305) do
   create_table "payments", force: :cascade do |t|
     t.string "address"
     t.integer "phone_number"
-    t.string "type"
+    t.string "payment_type"
     t.integer "bill_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false

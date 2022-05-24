@@ -1,4 +1,4 @@
-<h1>Show products</h1>
+<%= provide :title, "Product detail" %>
 
 <p><%= image_tag @product.display_image if @product.image.attached? %></p>
 <p><%= @product.name %></p>

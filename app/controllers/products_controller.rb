@@ -11,7 +11,6 @@ class ProductsController < ApplicationController
 
     def new
         @product = Product.new
-        @user = User.new
 
     end
 
