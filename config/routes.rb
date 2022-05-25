@@ -2,12 +2,12 @@ Rails.application.routes.draw do
 
   get 'carts/show', to: "carts#show", as:'cart'
   delete 'carts/:id', to: "carts#destroy"
- 
+
   post 'bills/:id/add', to: "bills#add_quantity", as:'bill_add'
   post 'bills/:id/reduce', to: "bills#reduce_quantity", as:'bill_reduce'
 
   root 'static_pages#home'
-  
+
   get 'static_pages/home'
   get 'static_pages/help'
 
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  
+
   get 'sign-up', to: 'users#new'
   post 'sign-up', to: 'users#create'
 
@@ -33,8 +33,9 @@ Rails.application.routes.draw do
   resources :microposts, only: [:create, :destroy, :show]
   resources :relationships, only: [:create, :destroy]
   resources :products
-  resources :bills
-  resources :payments
+  resources :bills do
+    resources :payments # => bill/:bill_id/payments
+  end
 
 
 end

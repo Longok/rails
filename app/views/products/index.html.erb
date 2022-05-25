@@ -10,23 +10,21 @@
 
     <% @products.each do |product| %>
 
-       <div class="card-item">  
+       <div class="card-item">
 
         <%= image_tag product.display_image if product.image.attached? %>
 
             <div class="card-body">
                 <h5 class="card-title"> <%= link_to product.name, product_path(product) %></h5>
-                
+
                 <p class="card-price"> <%= product.price %></p>
 
                 <%= number_field_tag :quantity, '1', min: 1 %>
 
             </div>
 
-            <p> <%= button_to "Add to cart", bills_path(:product_id => product.id) %> </p>
-        
+            <p> <%= button_to "Add to cart", bills_path(:product_id => product.id) id: 'btn-add-cart'%> </p>
+
        </div>
     <% end %>
 </div>
-
-    

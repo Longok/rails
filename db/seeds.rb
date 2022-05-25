@@ -7,7 +7,7 @@
         activated_at: Time.zone.now)
 
     50.times do |n|
-        name = Faker::Name.name 
+        name = Faker::Name.name
         email = "example-#{n+1}@railstutorial.org"
         password = "password"
 
@@ -28,8 +28,8 @@
 
     # follow
     # Following relationships
-    users = User.all 
-    user = users.first 
+    users = User.all
+    user = users.first
     following = users[2..20]
     followers = users[3..15]
     following.each{|followed| user.follow(followed)}
@@ -40,4 +40,3 @@
     #         price: 25000)
 
     #     image = Rails.root.joins("app/assets/images/co-duong.png").open
-    

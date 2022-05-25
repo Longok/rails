@@ -2,10 +2,10 @@
 
     <%= render "shared/error_messages", object: @payment %>
 
-    <%= f.label :address %> 
+    <%= f.label :address %>
     <%= f.text_field :address, class: "form-control" %>
 
-    <%= f.label :phone_number %> 
+    <%= f.label :phone_number %>
     <%= f.text_field :phone_number, class: "form-control" %>
 
     <%= f.label :payment_type %>
@@ -13,6 +13,4 @@
 
 
     <%= f.submit "Check out", class: "btn btn-primary" %>
-
-
 <% end %>
