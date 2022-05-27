@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_23_084305) do
+ActiveRecord::Schema.define(version: 2022_05_27_141442) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,14 +40,14 @@ ActiveRecord::Schema.define(version: 2022_05_23_084305) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "bills", force: :cascade do |t|
+  create_table "cart_items", force: :cascade do |t|
     t.integer "quantity", default: 1
     t.integer "product_id", null: false
     t.integer "cart_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["cart_id"], name: "index_bills_on_cart_id"
-    t.index ["product_id"], name: "index_bills_on_product_id"
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["product_id"], name: "index_cart_items_on_product_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -62,16 +62,6 @@ ActiveRecord::Schema.define(version: 2022_05_23_084305) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
-  end
-
-  create_table "payments", force: :cascade do |t|
-    t.string "address"
-    t.integer "phone_number"
-    t.string "payment_type"
-    t.integer "bill_id"
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -108,7 +98,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_084305) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bills", "carts"
-  add_foreign_key "bills", "products"
+  add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "products"
   add_foreign_key "microposts", "users"
 end

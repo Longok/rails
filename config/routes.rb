@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   get 'carts/show', to: "carts#show", as:'cart'
   delete 'carts/:id', to: "carts#destroy"
- 
-  post 'bills/:id/add', to: "bills#add_quantity", as:'bill_add'
-  post 'bills/:id/reduce', to: "bills#reduce_quantity", as:'bill_reduce'
+
+  post 'cart_items/:id/add', to: "cart_items#add_quantity", as:'cart_item_add'
+  post 'cart_items/:id/reduce', to: "cart_items#reduce_quantity", as:'cart_item_reduce'
 
   root 'static_pages#home'
   
@@ -33,10 +33,7 @@ Rails.application.routes.draw do
   resources :microposts, only: [:create, :destroy, :show]
   resources :relationships, only: [:create, :destroy]
   resources :products
-  resources :bills do 
-    resources :payments
-  end
-
+  resources :cart_items
 
 end
 
