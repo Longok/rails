@@ -15,14 +15,10 @@ class PaymentsController < ApplicationController
         @payment.user_id = current_user.id
 
         if @payment.save         
-            @cart = current_cart.id
-            @cart.nil?
+            Cart.destroy(session[:cart_id])
             flash[:info] = "Thank you for order"
             redirect_to "/products"
-            if @cart == nil 
-                session[:cart_id] = nil
-            else
-            end
+        
         else 
             render :new
         end
