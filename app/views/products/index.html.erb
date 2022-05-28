@@ -23,7 +23,7 @@
 
             </div>
 
-            <p> <%= button_to "Add to cart", bills_path(:product_id => product.id) %> </p>
+            <p> <%= button_to "Add to cart", bills_path(product_id: product) %> </p>
         
        </div>
     <% end %>

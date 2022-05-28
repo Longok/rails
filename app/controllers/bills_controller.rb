@@ -1,9 +1,9 @@
 class BillsController < ApplicationController
    
     def create
-        @cart = current_cart
-        product = Product.find(params[:product_id])
-        @bill = @cart.add_product(product)
+        @cart = Cart.find(session[:cart_id])
+        product = Product.find_by (params[:product_id])
+        @bill = @cart.add_product(product.id)
 
         @bill.save
         flash[:info] = "Them vao gio hang thanh cong"

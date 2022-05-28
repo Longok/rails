@@ -18,12 +18,12 @@ class Cart < ApplicationRecord
         return quantity
     end
 
-    def add_product(product)
-      current_item = bills.find_by product_id: (product)
+    def add_product(product_id)
+      current_item = bills.find_by(product_id: product_id)
       if current_item 
           current_item.quantity += 1
       else
-          current_item = bills.build(:product_id => product.id)
+          current_item = bills.build(product_id: product_id)
       end
       current_item
     end
