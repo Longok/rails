@@ -11,9 +11,9 @@ class PaymentsController < ApplicationController
 
 
     def create
+        @cart = current_cart.id
         @bill = Bill.find(params[:bill_id])
-        @payment = @bill.payments.build payment_params
-        @payment.user_id = current_user.id
+        @payment = @bill.payments.new payment_params.merge(user_id: current_user.id)
 
         if @payment.save
             Cart.destroy(session[:cart_id])
