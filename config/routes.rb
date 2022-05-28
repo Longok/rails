@@ -34,6 +34,9 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :products
   resources :cart_items
+  resources :carts do
+    resources :payments
+  end
 
 end
 

@@ -1,5 +1,6 @@
 class Cart < ApplicationRecord
-    has_many :cart_items, dependent: :destroy
+    has_many :cart_items
+    has_many :payments
     has_many :products, through: :bills
 
     def total_cart_item
