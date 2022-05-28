@@ -1,5 +1,9 @@
 class PaymentsController < ApplicationController
 
+    def index
+
+    end
+
     def new
         @cart = current_cart.id
         @payment = Payment.new
@@ -11,11 +15,14 @@ class PaymentsController < ApplicationController
         @payment.user_id = current_user.id
 
         if @payment.save         
-            @cart = current_cart
-            @cart.destroy
-            @cart = []
+            @cart = current_cart.id
+            @cart.nil?
             flash[:info] = "Thank you for order"
             redirect_to "/products"
+            if @cart == nil 
+                session[:cart_id] = nil
+            else
+            end
         else 
             render :new
         end
