@@ -1,15 +1,9 @@
 class CartItemsController < ApplicationController
 
     def create
-<<<<<<< HEAD:app/controllers/bills_controller.rb
-        @cart = Cart.find(session[:cart_id])
-        product = Product.find_by (params[:product_id])
-        @bill = @cart.add_product(product.id)
-=======
         @cart = current_cart
         product = Product.find(params[:product_id])
         @cart_item = @cart.add_product(product)
->>>>>>> cart-item:app/controllers/cart_items_controller.rb
 
         @cart_item.save
         flash[:info] = "Them vao gio hang thanh cong"
