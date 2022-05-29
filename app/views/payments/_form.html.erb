@@ -1,17 +1,8 @@
-<<<<<<< HEAD
-    <%= form_for([@bill, @payment]) do |f| %>
-
-    <%= render "shared/error_messages", object: @payment %>
-
-    <%= f.hidden_field :bill_id , :value => @payment.id %>
-
-=======
 <%= form_for(@payment, url: cart_payments_path) do |f| %>
 
     <%= render "shared/error_messages", object: @payment %>
 
     <%= f.hidden_field :cart_id , :value => @payment.cart_id %>
->>>>>>> cart-item
     <%= f.label :address %> 
 
     <%= f.text_field :address, class: "form-control" %>
