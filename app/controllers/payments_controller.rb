@@ -5,7 +5,6 @@ class PaymentsController < ApplicationController
     end
 
     def new
-        @cart = current_cart.id
         @payment = Payment.new
     end
 
@@ -14,22 +13,20 @@ class PaymentsController < ApplicationController
         @payment = @cart.payments.build payment_params
         @payment.user_id = current_user.id
 
-        if @payment.save 
+        if @payment.save
             @cart = Cart.find(session[:cart_id])
-            session[:cart_id] = nil   
+            session[:cart_id] = nil
             flash[:info] = "Thank you for order"
             redirect_to "/products"
-        
-        else 
+
+        else
             render :new
         end
-    end 
+    end
 
 
     private
     def payment_params
         params.require(:payment).permit :address, :phone_number, :payment_type, :cart_id, :user_id
     end
-
-
 end
