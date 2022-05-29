@@ -1,11 +1,7 @@
 class PaymentsController < ApplicationController
 
-    def index
-
-    end
-
     def new
-        @cart = current_cart.id
+        @cart = current_cart
         @payment = Payment.new
     end
 

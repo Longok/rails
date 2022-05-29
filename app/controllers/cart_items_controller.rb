@@ -1,7 +1,6 @@
 class CartItemsController < ApplicationController
 
     def create
-        @cart = current_cart
         product = Product.find(params[:product_id])
         @cart_item = @cart.add_product(product)
 
@@ -20,7 +19,6 @@ class CartItemsController < ApplicationController
 
 
     def add_quantity
-        @cart = current_cart
         @cart_item = CartItem.find(params[:id])
         @cart_item.quantity += 1
         @cart_item.save
@@ -29,7 +27,6 @@ class CartItemsController < ApplicationController
     end
 
     def reduce_quantity
-        @cart = current_cart
         @cart_item = CartItem.find(params[:id])
         if @cart_item.quantity > 1
             @cart_item.quantity -= 1
