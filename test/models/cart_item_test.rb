@@ -1,6 +1,6 @@
 require "test_helper"
 
-class BillsControllerTest < ActionDispatch::IntegrationTest
+class CartItemTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

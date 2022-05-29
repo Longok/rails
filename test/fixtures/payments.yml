@@ -3,13 +3,13 @@
 one:
   address: MyString
   phone_number: 1
-  type: 
-  bill_id: MyString
-  user_id: MyString
+  payment_type: MyString
+  cart: one
+  user: one
 
 two:
   address: MyString
   phone_number: 1
-  type: 
-  bill_id: MyString
-  user_id: MyString
+  payment_type: MyString
+  cart: two
+  user: two

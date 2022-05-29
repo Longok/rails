@@ -1,6 +1,6 @@
 <%= provide :title, "Cart" %>
 
-<% if cart.bills.count == 0 %>
+<% if cart.cart_items.count == 0 %>
 <h1>Ban chua co san pham nao, <%= link_to "mua ngay!", products_path %></h1>
 <% else %>
 <h1>Your Cart (<%= cart.total_quantity %> item)</h1>
@@ -16,17 +16,17 @@
             </tr>
         </thead>
         <tbody>
-            <%= render cart.bills %>
+            <%= render cart.cart_items %>
             <tr> 
                 <th><%= link_to "Delete cart", cart_path, method: :delete, data: {confirm: "Are you sure?"} %></th>
                 <th class="text-right" colspan="3">Subtotal:</th>
-                <td><%= @cart.total_bill %></td>
+                <td><%= @cart.total_cart_item %></td>
             </tr>
         </tbody>
     </table>
 
     <% if logged_in? %> 
-        <%= link_to "Check out", new_bill_payment_path %>
+        <%= link_to "Check out", new_cart_payment_path(@cart) %>
     <% else %>
         <%= link_to "Check-out", login_path %>   
     <% end %>
