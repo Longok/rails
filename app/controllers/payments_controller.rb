@@ -14,8 +14,9 @@ class PaymentsController < ApplicationController
         @payment = @cart.payments.build payment_params
         @payment.user_id = current_user.id
 
-        if @payment.save         
-            Cart.destroy(session[:cart_id])
+        if @payment.save 
+            @cart = Cart.find(session[:cart_id])
+            session[:cart_id] = nil   
             flash[:info] = "Thank you for order"
             redirect_to "/products"
         

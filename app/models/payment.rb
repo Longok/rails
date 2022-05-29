@@ -7,4 +7,5 @@ class Payment < ApplicationRecord
     validates :phone_number, presence: true, length: {minimum: 9, maximum: 10}
     validates :payment_type, :inclusion => PAYMENT_TYPE 
     
+
 end
