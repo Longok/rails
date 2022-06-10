@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
     before_action :current_cart
     before_action :current_cart_noti
 
-
     include SessionsHelper
 
     private
@@ -26,6 +25,5 @@ class ApplicationController < ActionController::Base
     def current_cart_noti
         @cart = current_cart
     end
-
 
 end
